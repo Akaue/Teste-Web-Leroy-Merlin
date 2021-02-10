@@ -12,7 +12,7 @@ public class AccessBrowserPage {
 	
 		System.setProperty("WebDriver.Chrome.Driver", "C:\\Tools\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		Dimension dimension = new Dimension(1200, 950);
+		Dimension dimension = new Dimension(1350, 700);
 		driver.manage().window().setSize(dimension);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("https://www.leroymerlin.com.br/localizacao");		
