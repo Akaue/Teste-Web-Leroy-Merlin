@@ -6,11 +6,11 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
+import Pages.AccountPage;
 import Pages.CartPage;
 import Pages.StorePage;
-import Support.AccessBrowserPage;
-import Support.LocationPage;
+import Support.AccessWeb;
+import Support.AddLocation;
 
 public class TestingLeroyMerlin {
 
@@ -18,8 +18,8 @@ public class TestingLeroyMerlin {
 
 	@BeforeTest
 	public void setUp() throws InterruptedException {
-		driver = AccessBrowserPage.CreateBrowser();
-		LocationPage selecionarLocal = new LocationPage(driver);
+		driver = AccessWeb.CreateBrowser();
+		AddLocation selecionarLocal = new AddLocation(driver);
 		selecionarLocal.locationAccess("São Paulo");
 	}
 
@@ -29,25 +29,24 @@ public class TestingLeroyMerlin {
 	}
 
 	// Escolher produtos e ir para o caixa
-	@Test
+
 	public void chooseAndCart() throws InterruptedException {
 
 		StorePage selecionandoProduto = new StorePage(driver);
 		selecionandoProduto.searchProduct("Dispensador");
 		selecionandoProduto.chooseProduct();
 
-		//primeira  forma
+		// primeira forma
 		String validandoProdutoEscolhido = driver
 				.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
 				.getText();
-	
+
 		Assert.assertEquals("Dispenser para Sabonete Líquido e Álcool em Gel Plástico 400ml Compacta Premisse",
 				validandoProdutoEscolhido);
-		
+
 		CartPage carrinho = new CartPage(driver);
-		carrinho.registerAccount();
-		
-		
+		carrinho.finalizingPurchase();
+
 	}
 
 	// testando login errado
@@ -66,20 +65,24 @@ public class TestingLeroyMerlin {
 
 	}
 
-	
+	@Test
 	public void registerAccountTest() throws InterruptedException {
 
-		StorePage registroConta = new StorePage(driver);
-		registroConta.btnLogin();
-		registroConta.btnRegister("930.651.650-90");
+		StorePage clickLogin = new StorePage(driver);
+		clickLogin.btnLogin();
+
+		CartPage clickBtnRegistro = new CartPage(driver);
+		clickBtnRegistro.btnRegister();
+
+		AccountPage registroConta = new AccountPage(driver);
+		registroConta.registerAccount("930.651.650-90");
 
 		String validaçãoPagina = driver.findElement(By.xpath("//*[contains(text(),'Bem-vindo à Leroy Merlin')]"))
 				.getText();
 		Assert.assertEquals(validaçãoPagina, "Bem-vindo à Leroy Merlin");
 
 	}
-	
-	
+
 //	@Test
 //	public void suiteTeste() throws InterruptedException {
 //		chooseAndCart();

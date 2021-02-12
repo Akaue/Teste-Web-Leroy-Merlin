@@ -1,4 +1,4 @@
-/target/
-
-*.html
-*.xml
+target/
+test-output/
+.html
+.xml

@@ -10,7 +10,7 @@ public class CartPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CartPage registerAccount() throws InterruptedException {
+	public CartPage finalizingPurchase() throws InterruptedException {
 
 		driver.findElement(By.xpath("//*[@data-component=\"add-to-cart\"]")).click();
 
@@ -23,6 +23,16 @@ public class CartPage extends BasePage {
 
 		return this;
 
+	}
+	
+	
+	
+	public AccountPage btnRegister() throws InterruptedException {
+		
+		driver.findElement(By.xpath("//*[contains(text(),'Cadastrar')]")).click();
+		Thread.sleep(4000);
+		
+		return new AccountPage(driver);
 	}
 
 }

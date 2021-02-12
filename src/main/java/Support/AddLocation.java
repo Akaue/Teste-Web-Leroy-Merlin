@@ -8,10 +8,10 @@ import Pages.BasePage;
 import Pages.StorePage;
 
 
-public class LocationPage extends BasePage{
+public class AddLocation extends BasePage{
 
 
-	public LocationPage(WebDriver driver) {
+	public AddLocation(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
