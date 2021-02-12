@@ -5,8 +5,8 @@
     <classes>
       <class name="Steps.TestingLeroyMerlin">
         <methods>
+          <include name="chooseAndCart"/>
           <include name="setUp"/>
-          <include name="registerAccountTest"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- Steps.TestingLeroyMerlin -->

@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="51621" started-at="2021-02-10T12:43:02 BRT" finished-at="2021-02-10T12:43:54 BRT">
+  <suite name="Default suite" duration-ms="52670" started-at="2021-02-11T16:30:59 BRT" finished-at="2021-02-11T16:31:52 BRT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="51621" started-at="2021-02-10T12:43:02 BRT" finished-at="2021-02-10T12:43:54 BRT">
+    <test name="Default test" duration-ms="52670" started-at="2021-02-11T16:30:59 BRT" finished-at="2021-02-11T16:31:52 BRT">
       <class name="Steps.TestingLeroyMerlin">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="setUp" is-config="true" duration-ms="21805" started-at="2021-02-10T12:43:02 BRT" finished-at="2021-02-10T12:43:24 BRT">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="setUp" is-config="true" duration-ms="23741" started-at="2021-02-11T16:30:59 BRT" finished-at="2021-02-11T16:31:23 BRT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="chooseAndCart()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="chooseAndCart" duration-ms="10711" started-at="2021-02-10T12:43:24 BRT" finished-at="2021-02-10T12:43:35 BRT">
+        <test-method status="PASS" signature="chooseAndCart()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="chooseAndCart" duration-ms="28594" started-at="2021-02-11T16:31:23 BRT" finished-at="2021-02-11T16:31:52 BRT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- chooseAndCart -->
-        <test-method status="PASS" signature="registerAccountTest()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="registerAccountTest" duration-ms="18861" started-at="2021-02-10T12:43:35 BRT" finished-at="2021-02-10T12:43:54 BRT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- registerAccountTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="tearDown" is-config="true" duration-ms="146" started-at="2021-02-10T12:43:54 BRT" finished-at="2021-02-10T12:43:54 BRT">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Steps.TestingLeroyMerlin@51cdd8a]" name="tearDown" is-config="true" duration-ms="228" started-at="2021-02-11T16:31:52 BRT" finished-at="2021-02-11T16:31:52 BRT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

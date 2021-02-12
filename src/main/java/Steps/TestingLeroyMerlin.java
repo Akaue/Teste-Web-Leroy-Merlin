@@ -7,6 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import Pages.CartPage;
 import Pages.StorePage;
 import Support.AccessBrowserPage;
 import Support.LocationPage;
@@ -27,7 +28,7 @@ public class TestingLeroyMerlin {
 		driver.close();
 	}
 
-	// Escolher 3 produtos e ir para o caixa
+	// Escolher produtos e ir para o caixa
 	@Test
 	public void chooseAndCart() throws InterruptedException {
 
@@ -35,15 +36,22 @@ public class TestingLeroyMerlin {
 		selecionandoProduto.searchProduct("Dispensador");
 		selecionandoProduto.chooseProduct();
 
+		//primeira  forma
 		String validandoProdutoEscolhido = driver
 				.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
 				.getText();
+	
 		Assert.assertEquals("Dispenser para Sabonete Líquido e Álcool em Gel Plástico 400ml Compacta Premisse",
 				validandoProdutoEscolhido);
+		
+		CartPage carrinho = new CartPage(driver);
+		carrinho.registerAccount();
+		
+		
 	}
 
 	// testando login errado
-	@Test
+
 	public void wrongLoginTest() throws InterruptedException {
 		StorePage cliqueBotão = new StorePage(driver);
 		cliqueBotão.btnLogin();
@@ -58,7 +66,7 @@ public class TestingLeroyMerlin {
 
 	}
 
-	@Test
+	
 	public void registerAccountTest() throws InterruptedException {
 
 		StorePage registroConta = new StorePage(driver);
@@ -70,5 +78,14 @@ public class TestingLeroyMerlin {
 		Assert.assertEquals(validaçãoPagina, "Bem-vindo à Leroy Merlin");
 
 	}
+	
+	
+//	@Test
+//	public void suiteTeste() throws InterruptedException {
+//		chooseAndCart();
+//		registerAccountTest();
+//		wrongLoginTest();
+//		
+//	}
 
 }

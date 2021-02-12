@@ -12,14 +12,13 @@ public class StorePage extends BasePage {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	Faker faker = new Faker();
 	String nome = faker.name().fullName();
 	String numero = faker.phoneNumber().cellPhone();
-			
+
 	public StorePage btnRegister(String CPF) throws InterruptedException {
-		driver.findElement(By.xpath("//*[contains(text(),'Cadastrar')]"))
-				.click();
+		driver.findElement(By.xpath("//*[contains(text(),'Cadastrar')]")).click();
 		Thread.sleep(4000);
 		driver.findElement(By.id("cpf-cnpj")).sendKeys(CPF);
 		driver.findElement(By.id("name")).sendKeys(nome);
@@ -29,17 +28,11 @@ public class StorePage extends BasePage {
 		driver.findElement(By.id("password")).sendKeys("Quin321Xd");
 		driver.findElement(By.id("confirm_password")).sendKeys("Quin321Xd");
 		driver.findElement(By.id("privacy_and_usage_terms-pf")).click();
-		
+
 		// teste quebra por causa da validação robo
 //		driver.findElement(By.xpath("//*[contains(text(),'Continuar')]")).click();
 		Thread.sleep(10000);
-		
-		
-		
-	
-			
-		
-		
+
 		// botao logo
 //		driver.findElement(By.xpath("//a[@class=\"header-logo\"]")).click();
 
@@ -72,6 +65,14 @@ public class StorePage extends BasePage {
 
 		return this;
 
+	}
+
+	public StorePage mensagemValidacao() {
+
+		driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
+				.getText();
+
+		return this;
 	}
 
 	// selecionando produtos de home office
