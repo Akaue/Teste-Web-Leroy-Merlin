@@ -1,7 +1,5 @@
 package Steps;
 
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -11,17 +9,16 @@ import org.testng.annotations.Test;
 import Pages.AccountPage;
 import Pages.CartPage;
 import Pages.StorePage;
-import Support.Generator;
+
 import Support.AccessWeb;
 import Support.AddLocation;
-import Support.Screenshot;
+
 
 
 public class TestingLeroyMerlin {
 
-	WebDriver driver;
-	    
-	   
+
+  WebDriver driver;
 
 	@BeforeTest
 	public void setUp() throws InterruptedException {
@@ -33,33 +30,23 @@ public class TestingLeroyMerlin {
 	@AfterTest
 	public void tearDown() {
 		driver.close();
-		
-		
 	}
 
-	
 	// Escolher produtos e ir para o caixa
-    @Test
-	public void chooseAndCart() throws InterruptedException {
+	@Test
+	public void chooseAndCartTest() throws InterruptedException {
 
 		StorePage selecionandoProduto = new StorePage(driver);
 		selecionandoProduto.searchProduct("Dispensador");
 		selecionandoProduto.chooseProduct();
-		
 
-		// primeira forma
-		String validandoProdutoEscolhido = driver
-				.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
-				.getText();
-		
-
+		String validaProdutoTexto = driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
+		.getText();
 		Assert.assertEquals("Dispenser para Sabonete Líquido e Álcool em Gel Plástico 400ml Compacta Premisse",
-				validandoProdutoEscolhido);
+				validaProdutoTexto);
 
 		CartPage carrinho = new CartPage(driver);
 		carrinho.finalizingPurchase();
-	
-
 
 	}
 
@@ -71,41 +58,31 @@ public class TestingLeroyMerlin {
 		StorePage loginErrado = new StorePage(driver);
 		loginErrado.wrongLogin("AkaueLima", "Senha aleatoria");
 
-		String validandoButton = driver.findElement(By.xpath("//*[contains(text(), 'Entrar')]")).getText();
-		Assert.assertEquals(validandoButton, "Entrar");
+		String validaButton = driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
+		.getText();
+
+		Assert.assertEquals(validaButton, "Entrar");
 
 //		String mensagem = driver.findElement(By.className("feedback-title")).getText();
 //		Assert.assertEquals(mensagem,"Ops! Alguma coisa está errada.");
 
 	}
-	  
-	@Test
+
+	
 	public void registerAccountTest() throws InterruptedException {
 
 		StorePage clickLogin = new StorePage(driver);
 		clickLogin.btnLogin();
-		
+
 		CartPage clickBtnRegistro = new CartPage(driver);
 		clickBtnRegistro.btnRegister();
-		
+
 		AccountPage registroConta = new AccountPage(driver);
 		registroConta.registerAccount("930.651.650-90");
 
-		String validaçãoPagina = driver.findElement(By.xpath("//*[contains(text(),'Bem-vindo à Leroy Merlin')]"))
-				.getText();
-		Assert.assertEquals(validaçãoPagina, "Bem-vindo à Leroy Merlin");
-		
-		
-		
+		String validaPagina = driver.findElement(By.xpath("//*[contains(text(),'Bem-vindo à Leroy Merlin')]")).getText();
+    	Assert.assertEquals(validaPagina, "Bem-vindo à Leroy Merlin");
+
 	}
-
-
-//	@Test
-//	public void suiteTeste() throws InterruptedException {
-//		chooseAndCart();
-//		registerAccountTest();
-//		wrongLoginTest();
-//		
-//	}
 
 }

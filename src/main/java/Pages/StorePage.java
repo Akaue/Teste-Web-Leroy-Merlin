@@ -57,5 +57,9 @@ public class StorePage extends BasePage {
 		return new CartPage(driver);
 
 	}
+	
+	
+	
+	 
 
 }
