@@ -37,36 +37,31 @@ public class TestingLeroyMerlin {
 		selecionandoProduto.searchProduct("Dispensador");
 		selecionandoProduto.chooseProduct();
 
-		String validaProdutoTexto = driver
-				.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
-				.getText();
 		Assert.assertEquals("Dispenser para Sabonete Líquido e Álcool em Gel Plástico 400ml Compacta Premisse",
-				validaProdutoTexto);
+				selecionandoProduto.validaProdutoTexto());
 
 		CartPage carrinho = new CartPage(driver);
 		carrinho.finalizingPurchase();
 
 	}
 
-	// testando login errado
-
+	// testando login errado	
+	@Test
 	public void wrongLoginTest() throws InterruptedException {
 		StorePage cliqueBotão = new StorePage(driver);
 		cliqueBotão.btnLogin();
 		StorePage loginErrado = new StorePage(driver);
-		loginErrado.wrongLogin("AkaueLima", "Senha aleatoria");
+		loginErrado.wrongLogin("AkaueLima", "Senha aleatoria");	
 
-		String validaButton = driver
-				.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
-				.getText();
-
-		Assert.assertEquals("Entrar", validaButton);
+		Assert.assertEquals("Entrar", loginErrado.validaButton());
 
 //		String mensagem = driver.findElement(By.className("feedback-title")).getText();
 //		Assert.assertEquals(mensagem,"Ops! Alguma coisa está errada.");
 
 	}
 
+	// testando registro de conta
+	@Test
 	public void registerAccountTest() throws InterruptedException {
 
 		StorePage clickLogin = new StorePage(driver);
@@ -78,9 +73,7 @@ public class TestingLeroyMerlin {
 		AccountPage registroConta = new AccountPage(driver);
 		registroConta.registerAccount("930.651.650-90");
 
-		String validaPagina = driver.findElement(By.xpath("//*[contains(text(),'Bem-vindo à Leroy Merlin')]"))
-				.getText();
-		Assert.assertEquals("Bem-vindo à Leroy Merlin", validaPagina);
+		Assert.assertEquals("Bem-vindo à Leroy Merlin", registroConta.validaPagina());
 
 	}
 

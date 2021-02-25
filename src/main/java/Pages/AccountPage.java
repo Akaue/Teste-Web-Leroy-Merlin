@@ -36,5 +36,9 @@ public class AccountPage extends BasePage{
 
 		return this;
 	}
+	
+	public	String validaPagina() {
+		 return driver.findElement(By.xpath("//*[contains(text(),'Bem-vindo à Leroy Merlin')]")).getText();
+	}
 
 }

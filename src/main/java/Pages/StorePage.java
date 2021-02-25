@@ -4,15 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
-
 public class StorePage extends BasePage {
 
 	public StorePage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public StorePage btnLogin() {
 		driver.findElement(By.xpath("//i[@class='glyph glyph-silhouette']")).click();
@@ -42,7 +39,6 @@ public class StorePage extends BasePage {
 
 	}
 
-
 	// selecionando produtos de home office
 	public CartPage chooseProduct() throws InterruptedException {
 
@@ -57,9 +53,16 @@ public class StorePage extends BasePage {
 		return new CartPage(driver);
 
 	}
-	
-	
-	
-	 
+
+	public String validaButton() {
+		return driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]")).getText();
+				
+	}
+
+	public String validaProdutoTexto() {
+		return driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
+				.getText();
+	}
+			
 
 }
