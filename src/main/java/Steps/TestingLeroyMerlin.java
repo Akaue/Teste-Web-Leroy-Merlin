@@ -14,16 +14,18 @@ import Support.AddLocation;
 
 public class TestingLeroyMerlin {
 
-	WebDriver driver;
-	AddLocation selecionarLocal = new AddLocation(driver);
-	StorePage storePage = new StorePage(driver);
-	CartPage cartPage = new CartPage(driver);
-	AccountPage accountPage = new AccountPage(driver);
+	public WebDriver driver;
+
+	public StorePage storePage = new StorePage(driver);
+	public CartPage cartPage = new CartPage(driver);
+	public AccountPage accountPage = new AccountPage(driver);
 
 	@BeforeTest
 	public void setUp() throws InterruptedException {
 		driver = AccessWeb.CreateBrowser();
-		selecionarLocal.locationAccess("São Paulo");
+		AddLocation addLocation = new AddLocation(driver);
+		addLocation.locationAccess("São Paulo");
+
 	}
 
 	@AfterTest
@@ -38,13 +40,13 @@ public class TestingLeroyMerlin {
 		storePage.searchProduct("Dispensador");
 		storePage.chooseProduct();
 
-		Assert.assertEquals("Dispenser para Sabonete Líquido e Álcool em Gel Plástico 400ml Compacta Premisse",
+		Assert.assertEquals("Dispensador Automático Para Copo Descartável De Água E Café",
 				storePage.validaProdutoTexto());
 		cartPage.finalizingPurchase();
 
 	}
 
-	// testando login errado
+	// login errado
 	@Test
 	public void wrongLoginTest() throws InterruptedException {
 
@@ -52,12 +54,14 @@ public class TestingLeroyMerlin {
 		storePage.wrongLogin("AkaueLima", "Senha aleatoria");
 		Assert.assertEquals("Entrar", storePage.validaButton());
 
-//		String mensagem = driver.findElement(By.className("feedback-title")).getText();
-//		Assert.assertEquals(mensagem,"Ops! Alguma coisa está errada.");
+		// Captcha robo impede validação correta
+//		String mensagem = driver.findElement(By.className("//*[@class=\"feedback feedback-error margin-top-double\"]"))
+//				.getText();
+//		Assert.assertEquals("Ops! Alguma coisa está errada.", mensagem);
 
 	}
 
-	// testando registro de conta
+	// registro de conta
 	@Test
 	public void registerAccountTest() throws InterruptedException {
 		storePage.btnLogin();

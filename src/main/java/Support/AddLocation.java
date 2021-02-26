@@ -2,7 +2,6 @@ package Support;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
 import Pages.BasePage;
 import Pages.StorePage;
@@ -18,9 +17,9 @@ public class AddLocation extends BasePage{
 
 	public StorePage locationAccess(String cidade) throws InterruptedException {
 
-		String mensagem = driver.findElement(By.xpath("//p[@class]")).getText();
-		Assert.assertEquals("Dessa forma você terá acesso aos produtos e ofertas da sua região.", mensagem);
-		System.out.println(mensagem);
+//		String mensagem = driver.findElement(By.xpath("//p[@class]")).getText();
+//		Assert.assertEquals("Dessa forma você terá acesso aos produtos e ofertas da sua região.", mensagem);
+//		System.out.println(mensagem);
 
 		driver.findElement(By.xpath("//input[@type=\"text\"]")).sendKeys(cidade);
 		Thread.sleep(5000);

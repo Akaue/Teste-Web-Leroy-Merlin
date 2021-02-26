@@ -45,8 +45,7 @@ public class StorePage extends BasePage {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("javascript:window.scrollBy(250,350)");
 
-		driver.findElement(By.xpath(
-				"//*[@class=\"col-xs-6 col-sm-12\"]//*[contains(text(),'Dispenser para Sabonete Líquido 400ml Compacta')]"))
+		driver.findElement(By.xpath("//div[contains(text(),'Dispensador Automático Para Copo Descartável De Ág')]"))
 				.click();
 		Thread.sleep(3000);
 
@@ -55,12 +54,12 @@ public class StorePage extends BasePage {
 	}
 
 	public String validaButton() {
-		return driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]")).getText();
+		return driver.findElement(By.xpath("//*[@class=\"button button-full button-primary margin-top align-left\"]")).getText();
 				
 	}
 
 	public String validaProdutoTexto() {
-		return driver.findElement(By.xpath("//h1[@class=\"product-title align-left color-text product-description\"]"))
+		return driver.findElement(By.xpath("//*[@class=\"product-title align-left color-text product-description\"]"))
 				.getText();
 	}
 			

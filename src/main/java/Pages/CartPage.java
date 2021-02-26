@@ -14,7 +14,7 @@ public class CartPage extends BasePage {
 
 		driver.findElement(By.xpath("//*[@data-component=\"add-to-cart\"]")).click();
 
-		driver.findElement(By.xpath("//span[@class=\"Text-sc-7m1nq4-11 kvFWSF\"]")).click();
+		
 		Thread.sleep(2000);
 
 		driver.findElement(By.xpath("//a[@class=\"Button-y1xsg2-0 ButtonPrimary-y1xsg2-1 kNzlbA\"]")).click();
