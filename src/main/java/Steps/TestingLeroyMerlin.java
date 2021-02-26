@@ -1,6 +1,5 @@
 package Steps;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -16,11 +15,14 @@ import Support.AddLocation;
 public class TestingLeroyMerlin {
 
 	WebDriver driver;
+	AddLocation selecionarLocal = new AddLocation(driver);
+	StorePage storePage = new StorePage(driver);
+	CartPage cartPage = new CartPage(driver);
+	AccountPage accountPage = new AccountPage(driver);
 
 	@BeforeTest
 	public void setUp() throws InterruptedException {
 		driver = AccessWeb.CreateBrowser();
-		AddLocation selecionarLocal = new AddLocation(driver);
 		selecionarLocal.locationAccess("São Paulo");
 	}
 
@@ -33,27 +35,22 @@ public class TestingLeroyMerlin {
 	@Test
 	public void chooseAndCartTest() throws InterruptedException {
 
-		StorePage selecionandoProduto = new StorePage(driver);
-		selecionandoProduto.searchProduct("Dispensador");
-		selecionandoProduto.chooseProduct();
+		storePage.searchProduct("Dispensador");
+		storePage.chooseProduct();
 
 		Assert.assertEquals("Dispenser para Sabonete Líquido e Álcool em Gel Plástico 400ml Compacta Premisse",
-				selecionandoProduto.validaProdutoTexto());
-
-		CartPage carrinho = new CartPage(driver);
-		carrinho.finalizingPurchase();
+				storePage.validaProdutoTexto());
+		cartPage.finalizingPurchase();
 
 	}
 
-	// testando login errado	
+	// testando login errado
 	@Test
 	public void wrongLoginTest() throws InterruptedException {
-		StorePage cliqueBotão = new StorePage(driver);
-		cliqueBotão.btnLogin();
-		StorePage loginErrado = new StorePage(driver);
-		loginErrado.wrongLogin("AkaueLima", "Senha aleatoria");	
 
-		Assert.assertEquals("Entrar", loginErrado.validaButton());
+		storePage.btnLogin();
+		storePage.wrongLogin("AkaueLima", "Senha aleatoria");
+		Assert.assertEquals("Entrar", storePage.validaButton());
 
 //		String mensagem = driver.findElement(By.className("feedback-title")).getText();
 //		Assert.assertEquals(mensagem,"Ops! Alguma coisa está errada.");
@@ -63,17 +60,11 @@ public class TestingLeroyMerlin {
 	// testando registro de conta
 	@Test
 	public void registerAccountTest() throws InterruptedException {
+		storePage.btnLogin();
+		cartPage.btnRegister();
+		accountPage.registerAccount("930.651.650-90");
 
-		StorePage clickLogin = new StorePage(driver);
-		clickLogin.btnLogin();
-
-		CartPage clickBtnRegistro = new CartPage(driver);
-		clickBtnRegistro.btnRegister();
-
-		AccountPage registroConta = new AccountPage(driver);
-		registroConta.registerAccount("930.651.650-90");
-
-		Assert.assertEquals("Bem-vindo à Leroy Merlin", registroConta.validaPagina());
+		Assert.assertEquals("Bem-vindo à Leroy Merlin", accountPage.validaPagina());
 
 	}
 
